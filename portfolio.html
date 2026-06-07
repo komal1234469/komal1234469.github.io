@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Komal Goswami | AI/ML Engineer | Aspiring Software Intern</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #e0e0e0; background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%); overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Hero Section */
+        #hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: radial-gradient(circle, rgba(0,123,255,0.1) 0%, transparent 70%); position: relative; }
+        #hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>'); }
+        .hero-content h1 { font-size: 4rem; font-weight: 700; background: linear-gradient(45deg, #00d4ff, #ff00ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; animation: glow 2s ease-in-out infinite alternate; }
+        @keyframes glow { from { text-shadow: 0 0 20px #00d4ff; } to { text-shadow: 0 0 30px #ff00ff; } }
+        .hero-content p { font-size: 1.5rem; margin-bottom: 30px; opacity: 0.9; }
+        .hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 15px 30px; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-block; }
+        .btn-primary { background: linear-gradient(45deg, #00d4ff, #0099cc); color: white; box-shadow: 0 10px 30px rgba(0,212,255,0.3); }
+        .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,212,255,0.5); }
+        .btn-secondary { background: transparent; color: #00d4ff; border: 2px solid #00d4ff; }
+        .btn-secondary:hover { background: #00d4ff; color: #0c0c0c; }
+        
+        /* Nav */
+        nav { position: fixed; top: 0; width: 100%; background: rgba(12,12,12,0.95); backdrop-filter: blur(20px); z-index: 1000; padding: 1rem 0; transition: all 0.3s; }
+        nav.scrolled { background: rgba(12,12,12,0.98); box-shadow: 0 5px 20px rgba(0,0,0,0.5); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 700; background: linear-gradient(45deg, #00d4ff, #ff00ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-links { display: flex; list-style: none; gap: 30px; }
+        .nav-links a { color: #e0e0e0; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: #00d4ff; }
+        
+        /* Sections */
+        section { padding: 100px 0; }
+        h2 { font-size: 3rem; text-align: center; margin-bottom: 60px; background: linear-gradient(45deg, #00d4ff, #ff00ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* About */
+        #about { background: rgba(255,255,255,0.02); }
+        .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
+        .about-content p { font-size: 1.2rem; margin-bottom: 30px; }
+        
+        /* Skills */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .skill-card { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; text-align: center; transition: all 0.3s; border: 1px solid rgba(0,212,255,0.2); backdrop-filter: blur(10px); }
+        .skill-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,212,255,0.2); border-color: #00d4ff; }
+        .skill-icon { font-size: 3rem; background: linear-gradient(45deg, #00d4ff, #ff00ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 15px; }
+        .skill-progress { height: 8px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; margin-top: 10px; }
+        .skill-bar { height: 100%; background: linear-gradient(90deg, #00d4ff, #ff00ff); border-radius: 10px; transition: width 1.5s ease-in-out; }
+        
+        /* Certifications */
+        .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .cert-card { background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; border-left: 4px solid #00d4ff; transition: all 0.3s; backdrop-filter: blur(10px); }
+        .cert-card:hover { transform: translateX(10px); box-shadow: 0 15px 30px rgba(0,212,255,0.2); }
+        .cert-title { font-size: 1.2rem; font-weight: 600; color: #00d4ff; margin-bottom: 8px; }
+        .cert-org { color: #ff00ff; font-weight: 500; margin-bottom: 10px; }
+        .cert-date { color: #888; font-size: 0.9rem; }
+        
+        /* Projects */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
+        .project-card { background: rgba(255,255,255,0.05); border-radius: 20px; overflow: hidden; transition: all 0.3s; border: 1px solid rgba(0,212,255,0.2); backdrop-filter: blur(10px); }
+        .project-card:hover { transform: translateY(-15px); box-shadow: 0 30px 60px rgba(0,212,255,0.3); border-color: #00d4ff; }
+        .project-img { height: 200px; background: linear-gradient(45deg, #00d4ff, #ff00ff); display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white; }
+        .project-content { padding: 30px; }
+        .project-title { font-size: 1.5rem; margin-bottom: 10px; color: #00d4ff; }
+        .project-desc { margin-bottom: 20px; }
+        .project-tech { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+        .tech-tag { background: rgba(0,212,255,0.2); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; }
+        
+        /* Timeline */
+        .timeline { max-width: 900px; margin: 0 auto; position: relative; }
+        .timeline::before { content: ''; position: absolute; left: 50%; width: 4px; height: 100%; background: linear-gradient(to bottom, #00d4ff, #ff00ff); transform: translateX(-50%); }
+        .timeline-item { display: flex; margin-bottom: 60px; position: relative; }
+        .timeline-item:nth-child(odd) { justify-content: flex-end; padding-left: 0; padding-right: 50%; }
+        .timeline-item:nth-child(even) { justify-content: flex-start; padding-right: 0; padding-left: 50%; }
+        .timeline-content { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; max-width: 400px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); backdrop-filter: blur(10px); border: 1px solid rgba(0,212,255,0.2); }
+        .timeline-date { font-weight: 600; color: #00d4ff; margin-bottom: 10px; }
+        
+        /* Awards & Activities */
+        .awards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .award-card { background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(255,0,255,0.1)); padding: 25px; border-radius: 15px; border: 1px solid rgba(0,212,255,0.3); transition: all 0.3s; }
+        .award-card:hover { transform: scale(1.02); box-shadow: 0 15px 35px rgba(0,212,255,0.3); }
+        .award-rank { font-size: 2rem; font-weight: 700; background: linear-gradient(45deg, #ffd700, #ffed4e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .award-title { font-size: 1.1rem; font-weight: 600; color: #00d4ff; margin: 10px 0; }
+        
+        /* Contact */
+        #contact { background: rgba(255,255,255,0.02); text-align: center; }
+        .contact-links { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 40px; }
+        .contact-link { width: 60px; height: 60px; background: linear-gradient(45deg, #00d4ff, #ff00ff); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; transition: all 0.3s; text-decoration: none; }
+        .contact-link:hover { transform: scale(1.1) rotate(360deg); box-shadow: 0 10px 30px rgba(0,212,255,0.5); }
+        
+        /* Footer */
+        footer { text-align: center; padding: 30px; background: rgba(0,0,0,0.5); }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .timeline::before { left: 30px; }
+            .timeline-item { flex-direction: column; padding-left: 80px !important; padding-right: 0 !important; }
+            .timeline-item:nth-child(odd) { padding-left: 80px !important; }
+        }
+        
+        /* Animations */
+        .fade-in { opacity: 0; transform: translateY(50px); transition: all 0.8s; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">KG</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#certs">Certifications</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#awards">Awards</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="hero-content fade-in">
+            <h1>Komal Goswami</h1>
+            <p>AI/ML Undergraduate | Aspiring AI Engineer <br>Kanpur, Uttar Pradesh, India</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="mailto:k12457857@gmail.com" class="btn btn-secondary">Hire Me</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content fade-in">
+                <p>B.Tech CS (AI & ML) with CGPA 8.0 from Maharana Institute. Python and c++ with 300+ LeetCode solves, 3-star HackerRank. Built production-ready ML systems and automation tools. Seeking AI Internship.</p>
+                <p>Proven track record: Hackathon 2nd place, 97th percentile Naukri Campus, multiple AI certifications from Google, Oracle, IBM, TCS.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card fade-in">
+                    <div class="skill-icon"><i class="fab fa-python"></i></div>
+                    <h3>Python</h3>
+                    <div class="skill-progress"><div class="skill-bar" style="width:95%"></div></div>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon"><i class="fas fa-brain"></i></div>
+                    <h3>Machine Learning</h3>
+                    <div class="skill-progress"><div class="skill-bar" style="width:85%"></div></div>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon"><i class="fas fa-database"></i></div>
+                    <h3>SQL & DBMS</h3>
+                    <div class="skill-progress"><div class="skill-bar" style="width:90%"></div></div>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon"><i class="fas fa-code"></i></div>
+                    <h3>DSA & OOP</h3>
+                    <div class="skill-progress"><div class="skill-bar" style="width:88%"></div></div>
+                </div>
+            </div>
+<h2>Soft Skills</h2>
+<div class="skills-grid">
+    
+    <div class="skill-card fade-in">
+        <div class="skill-icon"><i class="fas fa-comments"></i></div>
+        <h3>Communication Skill</h3>
+        <div class="skill-progress"><div class="skill-bar" style="width:95%"></div></div>
+    </div>
+    
+    <div class="skill-card fade-in">
+        <div class="skill-icon"><i class="fas fa-tasks"></i></div>
+        <h3>Management Skill</h3>
+        <div class="skill-progress"><div class="skill-bar" style="width:85%"></div></div>
+    </div>
+    
+    <div class="skill-card fade-in">
+        <div class="skill-icon"><i class="fas fa-users"></i></div>
+        <h3>Team Work</h3>
+        <div class="skill-progress"><div class="skill-bar" style="width:90%"></div></div>
+    </div>
+    
+    <div class="skill-card fade-in">
+        <div class="skill-icon"><i class="fas fa-lightbulb"></i></div>
+        <h3>Good Understanding</h3>
+        <div class="skill-progress"><div class="skill-bar" style="width:88%"></div></div>
+    </div>
+
+</div>
+
+   
+        </div>
+    </section>
+
+    <section id="certs">
+        <div class="container">
+            <h2>Certifications</h2>
+            <div class="certs-grid">
+                <div class="cert-card fade-in">
+                    <div class="cert-title">Certified AI Foundation Associate</div>
+                    <div class="cert-org">Oracle</div>
+                    <div class="cert-date">08/2025</div>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-title">5-Day AI Agent Intensive Course</div>
+                    <div class="cert-org">Google</div>
+                    <div class="cert-date">11/2025</div>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-title">GenAI Powered Data Analytics Job Simulation</div>
+                    <div class="cert-org">Tata (via Forage)</div>
+                    <div class="cert-date">08/2025</div>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-title">Data Visualization using Python</div>
+                    <div class="cert-org">IBM</div>
+                    <div class="cert-date">09/2023 – 01/2024</div>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-title">HTML 5</div>
+                    <div class="cert-org">Infosys Springboard</div>
+                    <div class="cert-date">05/2025 – 06/2025</div>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-title">TCS iON Career Edge – Young Professional</div>
+                    <div class="cert-org">TCS iON</div>
+                    <div class="cert-date">04/2025</div>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-title">Course on Computer Concepts</div>
+                    <div class="cert-org">NIELIT</div>
+                    <div class="cert-date">04/2023 – 07/2023</div>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-title">Quantitative Research Job Simulation</div>
+                    <div class="cert-org">J.P. Morgan (via Forage)</div>
+                    <div class="cert-date">09/2025</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-img"><i class="fas fa-newspaper"></i></div>
+                    <div class="project-content">
+                        <h3>Fake News Detection System</h3>
+                        <p>ML model using NLP, Scikit-learn, Pandas to classify news as real/fake with TF-IDF and preprocessing for high accuracy.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">Scikit-learn</span>
+                        </div>
+                        <a href="https://github.com/komal1234469" class="btn btn-primary" style="width:100%; margin-top:10px;">View Code</a>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-img"><i class="fab fa-youtube"></i></div>
+                    <div class="project-content">
+                        <h3>YouTube Video Summarizer</h3>
+                        <p>AI tool to fetch transcripts via API, apply NLP for concise summaries. Enhanced with IBM Data Visualization skills.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">APIs</span>
+                        </div>
+                        <a href="#contact" class="btn btn-primary" style="width:100%; margin-top:10px;">Demo Soon</a>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-img"><i class="fas fa-chart-line"></i></div>
+                    <div class="project-content">
+                        <h3>Real-Time Stock Portfolio Tracker</h3>
+                        <p>Live monitoring with yfinance API from CodeAlpha internship. Features J.P. Morgan-level quantitative analysis.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">yfinance</span>
+                            <span class="tech-tag">Visualization</span>
+                        </div>
+                        <a href="https://github.com/komal1234469" class="btn btn-primary" style="width:100%; margin-top:10px;">View Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="timeline">
+        <div class="container">
+            <h2>Experience & Education</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-date">09/2023 – 09/2027</div>
+                        <h3>B.Tech CS (AI & ML)</h3>
+                        <p>Maharana Institute of Professional Studies, CGPA: 8.0</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-date">03/2025 – 04/2025</div>
+                        <h3>Python Intern</h3>
+                        <p>CodeAlpha – Built stock tracker with yfinance API</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-date">06/2011 – Present</div>
+                        <h3>Sri Sathya Sai Seva Organisation</h3>
+                        <p>9-year value-based education, leadership development, Bal Vikas Program</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="awards">
+        <div class="container">
+            <h2>Achievements & Awards</h2>
+            <div class="awards-grid">
+                <div class="award-card fade-in">
+                    <div class="award-rank">🥈 2nd</div>
+                    <div class="award-title">Hackathon 2026, MPGI College via Unstop</div>
+                    <div class="award-date">03/2026</div>
+                </div>
+                <div class="award-card fade-in">
+                    <div class="award-rank">97th</div>
+                    <div class="award-title">Percentile - Naukri Campus Young Turks</div>
+                    <div class="award-date">10/2024</div>
+                </div>
+                <div class="award-card fade-in">
+                    <div class="award-rank">🥈 2nd</div>
+                    <div class="award-title">Sri Satya Sai District Essay Competition</div>
+                    <div class="award-date">07/2023</div>
+                </div>
+                <div class="award-card fade-in">
+                    <div class="award-rank">🥉 3rd</div>
+                    <div class="award-title">Sri Satya Sai Samithi Essay Competition</div>
+                    <div class="award-date">06/2023</div>
+                </div>
+                <div class="award-card fade-in">
+                    <div class="award-rank">⭐ 3-Star</div>
+                    <div class="award-title">HackerRank Problem Solving & 30 Days of Code</div>
+                </div>
+                <div class="award-card fade-in">
+                    <div class="award-rank">⚡ 300+</div>
+                    <div class="award-title">LeetCode Problems Solved</div>
+                </div>
+                <div class="award-card fade-in">
+                    <div class="award-rank">🏕️</div>
+                    <div class="award-title">Scouts and Guides, Kanpur Nagar</div>
+                    <div class="award-date">2018</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Let's Connect</h2>
+            <p style="text-align:center; font-size:1.2rem; margin-bottom:40px;">Ready for Hire me? 8+ certifications, 300+ LeetCode, proven projects. Call: 9628000075</p>
+            <div class="contact-links">
+                <a href="mailto:k12457857@gmail.com" class="contact-link" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://linkedin.com/in/komal-goswami-246612333/" class="contact-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/komal1234469" class="contact-link" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://hackerrank.com/profile/K12457857" class="contact-link" title="HackerRank"><i class="fab fa-hackerrank"></i></a>
+                <a href="https://leetcode.com/u/Ko_mal123/" class="contact-link" title="LeetCode"><i class="fab fa-leetcode"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+<p>
+  © 2026 Komal Goswami | 
+  <a href="resume.pdf" download style="color:#00d4ff;">
+    Download Resume
+  </a>
+</p>
+            </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Fade in on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Skill bars animation
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.skill-bar').forEach((bar, i) => {
+                setTimeout(() => bar.style.width = bar.style.width, i * 200);
+            });
+        });
+    </script>
+</body>
+</html>
